@@ -1,0 +1,21 @@
+---
+import ProjectContent from './projectContent.astro';
+import Card from '../Card/index.astro';
+
+type Props = {
+  title: string;
+  image: string;
+  github: string;
+  url?: string;
+};
+
+const { image, github, url, title } = Astro.props;
+---
+
+<div class="pb-10">
+  <Card colSpan="md:col-span-3" rowSpan="md:row-span-4 flex gap-4">
+    <ProjectContent title={title} image={image} github={github} url={url}>
+      <slot />
+    </ProjectContent>
+  </Card>
+</div>

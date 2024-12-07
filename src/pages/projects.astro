@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/Project/projectCard.astro';
+---
+
+<script>
+  import { stagger, spring, timeline, type TimelineDefinition } from 'motion';
+  import { loaderAnimation } from '../lib/constants';
+  const cards = document.querySelectorAll('.card');
+
+  const sequence = [
+    loaderAnimation,
+    [
+      cards,
+      { y: ['40%', '0%'], opacity: [0, 1] },
+      {
+        at: '-0.1',
+        duration: 0.4,
+        delay: stagger(0.3),
+        easing: spring({ velocity: 100, stiffness: 50, damping: 10 }),
+      },
+    ],
+  ];
+
+  timeline(sequence as TimelineDefinition);
+</script>
+
+<Layout
+  title="Vimal Tony Babu - backend-end Developer"
+  description="I'm a developer based in India, database designing and product development. My primary tools of choice include: JavaScript, Python, Nodejs, Mongodb, Postgres, React."
+>
+  <main class="text-white m-auto p-2 max-w-6xl w-full h-screen">
+    <div class="p-10 text-size-3xl font-bold"><h1>My Projects</h1></div>
+    <ProjectCard
+      title="Asteroids Game"
+      image="/project-chat.png"
+      github="https://github.com/Antony0101/space-asteroids"
+      url="https://asteroids.antony0101.in"
+    >
+      <p>
+        Asteroids is a game where you have to destroy the asteroids coming towards you by shooting bullet from the space
+        ship. The game is build using vanilla javascript without using any libraries. The framework used is vitejs.
+      </p>
+    </ProjectCard>
+    <ProjectCard
+      title="Chat App"
+      image="/project-chat.png"
+      github="https://github.com/Antony0101/nextjs-socketio-chat"
+      url="https://chatapp.antony0101.in"
+    >
+      <p>
+        Chat app is a real time chat application where you can chat with your friends and it also supports groups. The
+        app is build using nextjs and socket.io. The nextjs part of the app is deployed in vercel and server side
+        socket.io is deployed in render.
+      </p>
+    </ProjectCard>
+    <ProjectCard
+      title="Static Site Generator"
+      image="/project-static-site.png"
+      github="https://github.com/Antony0101/static-site-generator-complete"
+      url=""
+    >
+      <p>
+        Static site generator is a tool to generate static sites from markdown files. The tool is build using nodejs and
+        typescript. The parsing of markdown files is done without using any libraries. Currently it only supports basic
+        markdown syntax. But i am planning to add more features to it.
+      </p>
+    </ProjectCard>
+  </main>
+</Layout>
