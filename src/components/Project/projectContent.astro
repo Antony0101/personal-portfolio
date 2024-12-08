@@ -16,17 +16,17 @@ const { image, github, url, title } = Astro.props;
 <div>
   <h1 class="text-xl font-bold">{title}</h1>
   <div class="pt-10 h-full w-full">
-    <div class="flex justify-between">
-      <div class="w-[50%]">
+    <div class="flex flex-col-reverse md:flex-row justify-between gap-5">
+      <div class="w-full md:w-[50%]">
         <slot />
       </div>
-      <div class="w-[50%] border border-white">
+      <div class="w-full md:w-[50%] border border-white">
         <a href={image}>
           <img src={image} alt="Heere" />
         </a>
       </div>
     </div>
-    <div class="flex gap-4">
+    <div class="mt-5 flex gap-4">
       <a href={github} aria-label="github url" target="_blank">
         <Button aria-label="github url">
           <Icon name="ri:github-fill" class="h-6" />
